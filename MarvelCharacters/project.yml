@@ -1,0 +1,32 @@
+name: MarvelCharacters
+options:
+  bundleIdPrefix: abc.MarvelCharacters
+packages:
+  Moya:
+    url: https://github.com/Moya/Moya
+    exactVersion: 14.0.0
+  SDWebImage:
+    url: https://github.com/SDWebImage/SDWebImage
+    from: 5.11.1
+targets:
+  MarvelCharacters:
+    type: application
+    platform: iOS
+    deploymentTarget: "13.0"
+    sources: [MarvelCharacters]
+    settings:
+      PRODUCT_NAME: "MarvelCharacters"
+    scheme:
+      testTargets:
+        - MarvelCharactersTests
+    dependencies:
+      - package: Moya
+      - package: SDWebImage
+  MarvelCharactersTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [MarvelCharactersTests]
+    dependencies:
+      - target: MarvelCharacters
+    settings:
+      PRODUCT_NAME: "MarvelCharactersTests"
